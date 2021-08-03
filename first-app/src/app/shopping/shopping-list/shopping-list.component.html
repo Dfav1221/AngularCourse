@@ -1,5 +1,10 @@
-    <p>here will be list</p>
-    <p>here will be list</p>
-    <p>here will be list</p>
-    <p>here will be list</p>
+<ul class="list-group">
+  <a
+    class="list-group-item"
+    style="cursor:pointer"
+    *ngFor="let ingredient of ingredients">
+    {{ingredient.name}} ({{ingredient.amount}})
+
+  </a>
+</ul>
 
