@@ -1,2 +1,13 @@
+<div class="container">
+  <br/>
+  <button class="btn btn-primary" (click)="changeVisibility()">Display Details</button>
+  <hr>
+  <p *ngIf="isVisible">Can you see me?</p>
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let item of buttonsClicks" [ngStyle]="{backgroundColor: getColor(item)}">
+        This is {{item}} click
+    </li>
 
+  </ul>
+</div>
 
