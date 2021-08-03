@@ -1,2 +1,6 @@
+<div class="text-center">
 
-
+  <input type="text" [(ngModel)]="username">
+  <p>{{username}}</p>
+  <button class="btn-primary btn" (click)="clearUserField()" [disabled]="!username">Kill em All!</button>
+</div>
