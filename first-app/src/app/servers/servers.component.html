@@ -7,8 +7,16 @@
         (click)="onCreateServer()">
   Add new Server
 </button>
+<ul class="list-group">
+  <li class="list-group-item"></li>
 
+</ul>
 <app-server></app-server>
 <app-server></app-server>
 <hr>
-<p>{{serverCreationStatus}}</p>
+<p *ngIf="serverCreated;else noServer">{{serverCreationStatus}}</p>
+<ng-template #noServer>
+  <p>
+    Let's create new item
+  </p>
+</ng-template>
