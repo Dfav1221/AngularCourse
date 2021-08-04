@@ -1,0 +1,10 @@
+<button class="btn btn-success" (click)="onGameStart()">Start</button>
+<button class="btn btn-danger" (click)="onGameStop()">Stop</button>
+<div class="row">
+  <div class="col-md-5">
+    <app-odd [newNumber]="oddNumber"></app-odd>
+  </div>
+  <div class="col-md-5">
+    <app-even [newNumber]="evenNumber"></app-even>
+  </div>
+</div>
