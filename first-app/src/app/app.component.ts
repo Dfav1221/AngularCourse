@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {UsersService} from "./users.service";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  name = 'Name';
+  @Input() usersClicked: {number:number};
+
+  constructor(usersService:UsersService) {
+      this.usersClicked = usersService.usersSwapCount;
+  }
+
+
 }
