@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {Recipe} from "../recipe.mode";
+import { EventEmitter } from '@angular/core';
+import {Component, OnInit, Output} from '@angular/core';
+import {Recipe} from "../recipe.model";
 
 @Component({
   selector: 'app-recipe-list',
@@ -8,9 +9,11 @@ import {Recipe} from "../recipe.mode";
 })
 export class RecipeListComponent implements OnInit {
 
+  @Output() recipeWasSelected = new EventEmitter<Recipe>();
+
   recipes: Recipe[] = [
-    new Recipe("spaghetti","italian","https://www.kwestiasmaku.com/sites/v123.kwestiasmaku.com/files/spaghetti_bolognese_01.jpg"),
-    new Recipe("baguette","french","https://lh3.googleusercontent.com/proxy/rw-6lb-r2z0NtVnUg5Cse1kfSoKdjaoUEEeD9hAtPIphPw3UGcSCvTVnbVpumG4kaPDtC8OPFQbUMMHbrHXgkXZSJwGbUf3EIp1myZFXd3rFt8YnbrTc5OtltvCxRWn8")
+    new Recipe("baguette","french","https://www.carrefour.pl/images/product/org/bagietka-z-maslem-i-czosnkiem-165-g-ioojis.jpg"),
+    new Recipe("spaghetti","italian","https://www.kwestiasmaku.com/sites/v123.kwestiasmaku.com/files/spaghetti_bolognese_01.jpg")
   ];
 
   constructor() { }
@@ -18,4 +21,7 @@ export class RecipeListComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onRecipeSelected(recipe: Recipe) {
+    this.recipeWasSelected.emit(recipe);
+  }
 }
