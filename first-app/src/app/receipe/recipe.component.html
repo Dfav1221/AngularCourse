@@ -2,7 +2,7 @@
   <div class="col-md-5">
     <button class="btn btn-success">Add new recipe</button>
     <hr>
-    <app-recipe-list (recipeWasSelected)="selectedRecipe = $event"></app-recipe-list>
+    <app-recipe-list></app-recipe-list>
   </div>
   <div class="col-md-7">
     <app-recipe-details *ngIf="selectedRecipe; else infoText" [recipe]="selectedRecipe"></app-recipe-details>

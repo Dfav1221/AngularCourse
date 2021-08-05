@@ -8,14 +8,9 @@ import {Ingredient} from "../shared/ingredient.model";
 })
 export class ShoppingComponent implements OnInit {
 
-  @Output() ingredient:Ingredient;
-
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  onIngredientAdded(ingredient:Ingredient) {
-    this.ingredient = ingredient;
-  }
 }
