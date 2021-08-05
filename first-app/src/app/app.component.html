@@ -1,2 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
 
-
+      <button
+        class="btn btn-primary"
+        (click)="onlyOdd = !onlyOdd">
+        Only show oodd numbers
+      </button>
+      <br><br>
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let number of numbers">
+          {{number}}
+        </li>
+      </ul>
+      <p appBasicHighlight>Style with directive! Yay</p>
+    </div>
+  </div>
+</div>
