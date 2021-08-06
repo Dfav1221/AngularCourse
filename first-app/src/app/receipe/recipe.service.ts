@@ -27,7 +27,9 @@ export class RecipeService {
   getRecipes() {
     return this.recipes.slice(); //array copy
   }
-
+  getRecipeById(name:string){
+    return this.recipes.find(recipe=>recipe.name === name);
+  }
   addToShoppingList(recipe: Recipe) {
 
     this.shoppingService.addIngredients(recipe.ingredients);
