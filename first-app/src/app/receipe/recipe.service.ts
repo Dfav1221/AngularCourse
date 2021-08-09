@@ -1,4 +1,4 @@
-import {EventEmitter, Injectable} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Recipe} from "./recipe.model";
 import {Ingredient} from "../shared/ingredient.model";
 import {ShoppingService} from "../shopping/shopping.service";
@@ -19,7 +19,6 @@ export class RecipeService {
       "https://www.kwestiasmaku.com/sites/v123.kwestiasmaku.com/files/spaghetti_bolognese_01.jpg",
       [new Ingredient('pasta', 2), new Ingredient('tomato', 5)])
   ];
-  recipeSelected = new EventEmitter<Recipe>();
 
   constructor(private shoppingService: ShoppingService) {
   }
@@ -27,12 +26,12 @@ export class RecipeService {
   getRecipes() {
     return this.recipes.slice(); //array copy
   }
-  getRecipeById(name:string){
-    return this.recipes.find(recipe=>recipe.name === name);
+
+  getRecipeById(name: string) {
+    return this.recipes.find(recipe => recipe.name === name);
   }
+
   addToShoppingList(recipe: Recipe) {
-
     this.shoppingService.addIngredients(recipe.ingredients);
-
   }
 }
