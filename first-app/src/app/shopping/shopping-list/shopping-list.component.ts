@@ -8,23 +8,23 @@ import {Subscribable, Subscription} from "rxjs";
   templateUrl: './shopping-list.component.html',
   styleUrls: ['./shopping-list.component.css']
 })
-export class ShoppingListComponent implements OnInit,OnDestroy {
-  private igChangeSub:Subscription;
+export class ShoppingListComponent implements OnInit{
+  private igChangeSub: Subscription;
 
   ingredients: Ingredient[];
 
-  constructor(private shoppingService:ShoppingService) {
+  constructor(private shoppingService: ShoppingService) {
   }
 
   ngOnInit(): void {
     this.ingredients = this.shoppingService.getIngredients();
-    this.shoppingService.ingredientsChanged.subscribe((ingredients:Ingredient[])=>{
+    this.shoppingService.ingredientsChanged.subscribe((ingredients: Ingredient[]) => {
       this.ingredients = ingredients;
     })
   }
 
-  ngOnDestroy(): void {
-    this.igChangeSub.unsubscribe();
-  }
+  onEditItem(index: number) {
+    this.shoppingService.editing.next(index);
 
+  }
 }

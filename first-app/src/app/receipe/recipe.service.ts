@@ -2,12 +2,14 @@ import {Injectable} from '@angular/core';
 import {Recipe} from "./recipe.model";
 import {Ingredient} from "../shared/ingredient.model";
 import {ShoppingService} from "../shopping/shopping.service";
+import {Subject} from "rxjs";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
 })
 export class RecipeService {
-
+  recipeChanged = new Subject<Recipe[]>();
   private recipes: Recipe[] = [
     new Recipe("baguette",
       "french",
@@ -20,7 +22,7 @@ export class RecipeService {
       [new Ingredient('pasta', 2), new Ingredient('tomato', 5)])
   ];
 
-  constructor(private shoppingService: ShoppingService) {
+  constructor(private shoppingService: ShoppingService,private router:Router) {
   }
 
   getRecipes() {
@@ -31,7 +33,26 @@ export class RecipeService {
     return this.recipes.find(recipe => recipe.name === name);
   }
 
+  addRecipe(recipe:Recipe){
+    this.recipes.push(recipe);
+    this.recipeChanged.next(this.recipes.slice());
+  }
+
+  updateRecipe(recipe:Recipe,name:string){
+    let oldRecipe = this.getRecipeById(name);
+    let index = this.recipes.findIndex(value=>oldRecipe === value);
+    this.recipes[index] = recipe;
+    this.recipeChanged.next(this.recipes.slice());
+  }
+
   addToShoppingList(recipe: Recipe) {
     this.shoppingService.addIngredients(recipe.ingredients);
+    this.recipeChanged.next(this.recipes.slice());
+  }
+
+  deleteRecipe(recipe: Recipe) {
+    let index = this.recipes.findIndex(value => recipe === value);
+    this.recipes.splice(index,1);
+    this.recipeChanged.next(this.recipes.slice());
   }
 }
