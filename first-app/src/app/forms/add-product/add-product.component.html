@@ -1,0 +1,49 @@
+<div class="container">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-group">
+    <h3>Add Product Form</h3>
+    <div class="row">
+      <div class="col-xs-12">
+        <label for="name">Name</label>
+        <input type="text" formControlName="name" id="name" class="form-control">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-8">
+        <label for="price">Price</label>
+        <input type="number" formControlName="price" id="price" class="form-control">
+      </div>
+      <div class="col-xs-4">
+        <label for="weight">Weight</label>
+        <input type="number" formControlName="weight" id="weight" class="form-control">
+      </div>
+    </div>
+    <h3>Elements</h3>
+    <div class="row">
+      <div class="col-xs-4">
+        <label for="el-name">Name</label>
+      </div>
+      <div class="col-xs-4">
+        <label for="percent">Percentage</label>
+      </div>
+      <div class="col-xs-4">
+        <button type="button" class="btn btn-primary pull-right" (click)="onAddElement()">Add</button>
+      </div>
+    </div>
+    <div class="row form-group" formArrayName="elements">
+      <div class="container" *ngFor="let element of elementForm.controls;let i = index">
+        <div class="container" [formGroupName]="i">
+          <div class="col-xs-4 ">
+            <input type="text" class="form-control" id="el-name" formControlName="elname">
+          </div>
+          <div class="col-xs-4">
+            <input type="text" class="form-control" id="percent" formControlName="elpercent">
+          </div>
+          <div class="col-xs-2">
+            <button type="button" class="btn btn-danger" (click)="onDeleteElement(i)">X</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-group-justified btn-primary">Submit</button>
+  </form>
+</div>
