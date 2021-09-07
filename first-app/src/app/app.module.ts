@@ -14,6 +14,9 @@ import {DropdownDirective} from './shared/dropdown.directive';
 import {AppRoutingModule} from "./app-routing.module";
 import {RecipeStartComponent} from './receipe/recipe-start/recipe-start.component';
 import {RecipeEditComponent} from './receipe/recipe-edit/recipe-edit.component';
+import {HttpClient, HttpClientModule} from "@angular/common/http";
+import { AuthComponent } from './auth/auth.component';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -31,12 +34,15 @@ import {RecipeEditComponent} from './receipe/recipe-edit/recipe-edit.component';
     DropdownDirective,
     RecipeStartComponent,
     RecipeEditComponent,
+    AuthComponent,
+    LoadingSpinnerComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,15 @@
+.btn.btn-primary{
+  margin:5px;
+}
+.btn-login{
+  min-width:8rem;
+}
+
+.btn-change{
+  min-width: 14rem;
+}
+
+
+input.ng-touched.ng-invalid{
+  border:1px solid red;
+}
